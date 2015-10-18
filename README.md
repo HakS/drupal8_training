@@ -13,3 +13,4 @@ Algunos settings
 * estos archivos son para soportar settings por envionment
 * observacion: por default el gitignore ignora el archivo settings.php, pero en este sitio haremos que lo versione para guardar aqui settings en general
 que apliquen para todos los envionments, y para las configuraciones por envionment (base de datos, settings de performance, etc) se haran por environment y eso no se versionanara
+* hasta nuevo aviso, drush aun se necesita para muchas cosas como dumnpear o restaurar bases de datos, o generar configurations a otros environments aparte del de sync
