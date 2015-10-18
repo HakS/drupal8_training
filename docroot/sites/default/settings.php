@@ -684,11 +684,11 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
 if (file_exists(__DIR__ . '/settings.dev.php')) {
-  include __DIR__ . '/settings.local.php';
+  include __DIR__ . '/settings.dev.php';
 }
 if (file_exists(__DIR__ . '/settings.staging.php')) {
-  include __DIR__ . '/settings.local.php';
+  include __DIR__ . '/settings.staging.php';
 }
 if (file_exists(__DIR__ . '/settings.prod.php')) {
-  include __DIR__ . '/settings.local.php';
+  include __DIR__ . '/settings.prod.php';
 }
