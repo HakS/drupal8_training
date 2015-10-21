@@ -1,0 +1,8 @@
+
+rootstack_sandbox.node_fancy_display_controller_index:
+  path: '/fancy_display/{count}'
+  defaults:
+    _controller: '\Drupal\rootstack_sandbox\Controller\NodeFancyDisplayController::index'
+    _title: 'Node fancy display'
+  requirements:
+    _permission: 'access content'

@@ -13,7 +13,9 @@
 
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings.*.php
-sites/*/services*.yml
+
+# JB: Until knowing what does services.yml do exactly, I'll conserve it on the repo
+# sites/*/services*.yml
 
 # Ignore paths that contain user-generated content.
 sites/*/files

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Contains rootstack_sandbox.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function rootstack_sandbox_theme($existing, $type, $theme, $path) {
+  return [
+    'fancy_nodes' => [
+      'variables' => [
+        'nodes' => '',
+        'total' => ''
+      ],
+    ],
+    'fancy_node' => [
+      'variables' => [
+        'title' => '',
+        'body' => ''
+      ],
+    ],
+  ];
+}
