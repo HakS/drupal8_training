@@ -22,3 +22,22 @@ que apliquen para todos los envionments, y para las configuraciones por envionme
 * hasta nuevo aviso, creo que para desinstalar algo que provee cosas va a tocar matar cada elemento creado (ejm: si creas comentarios y nodos con comentarios, tendras que borrar su definicion, como no existen mas hooks para extender codigo (pareciera que los hooks aun existen es para informar, ejm hook_theme) deshabiltar modulos se ha hecho poco factible
 * los comentarios son entidades pero tambien son fieldables (si el concepto de una entidad fieldable ya esta imerso en el core, creo que un modulo como fieldcollection ya no deberia ser tan dificil de que exista como en d7)
 * para desinstalar un modulo hay que borrar todos los elementos creados con el mismo, ejemplo si se quiere deshabilitar comment se debe borrar primero los comentarios, luego los campos de tipo comment declarados en diversas entidades, luego borrar los comment types y ahi recien estara disponible la opcion para desinstalar. Tiene que ser en ese ese orden, ya que ahora en D8 todo elemento que dependa de otro estara bloqueado de ser borrado hasta que su dependencia (sea otra configuracion o contenido) se borren tambien... por suerte Drupal Console nos avisa cuales son las dependencias a borrar para poder desinstalar un modulo... por ahora Drupal tiene muy tedioso desinstalalr un modulo, hay un resumen de toda la discusion llevada a cabo en esta pagina https://www.drupal.org/node/2225029, lo que pareciera ser es que por ahora si un modulo contrib pone el sitio muy inestable, si el modulo creo configuraciones y no hay forma de borrarlas en el UI, tocara borrarlas a mano del configuration
+* cuando se genera un modulo con Drupal Console, cuando pregunta si se desea generar un modulo como feature, pues resulta que si es lo que parece, crea un modulo compatible con features para D8
+
+## Paginas utiles
+
+* http://www.sitepoint.com/drupal-8-version-entityfieldquery/
+* https://github.com/DrupalTwig/sandwich
+* http://drupaltwig.github.io/ThemeSystemLA2015
+* https://hechoendrupal.gitbooks.io/drupal-console/content/
+* https://www.drupal.org/node/2225029
+* http://nuvole.org/blog/2014/aug/20/git-workflow-managing-drupal-8-configuration
+* https://www.drupal.org/node/2133171
+* http://www.webomelette.com/drupal-8-dependency-injection-service-container-and-all-jazz
+* http://www.sitepoint.com/drupal-8-hooks-symfony-event-dispatcher/
+* https://api.drupal.org/api/drupal/core!core.api.php/group/form_api/8
+* https://www.drupal.org/node/2117411
+* http://www.trellon.com/content/blog/how-create-custom-form-in-drupal-8
+* https://www.drupal.org/developing/api/8/plugins
+* https://www.palantir.net/blog/d8ftw-hacking-core-without-killing-kittens
+* http://knpuniversity.com/blog/drupaler-learn-symfony

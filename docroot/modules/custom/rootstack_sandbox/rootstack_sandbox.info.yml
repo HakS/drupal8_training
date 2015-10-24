@@ -1,0 +1,5 @@
+name: Sandbox module
+type: module
+description: Module to practice stuff from Drupal 8
+core: 8.x
+package: Rootstack
