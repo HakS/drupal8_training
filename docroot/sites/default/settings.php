@@ -692,3 +692,7 @@ if (file_exists(__DIR__ . '/settings.staging.php')) {
 if (file_exists(__DIR__ . '/settings.prod.php')) {
   include __DIR__ . '/settings.prod.php';
 }
+
+$settings['install_profile'] = 'standard';
+$config_directories['sync'] = 'sites/default/files/config_NqvH1UIqTA7Mvg2KFfc7Glqyl-iyIacOAYFXJ-58SwlOQ6CQuOOyBPZyXwV329A2sRzi1cCUug/sync';
+$config_directories['local'] = '../config/local';
