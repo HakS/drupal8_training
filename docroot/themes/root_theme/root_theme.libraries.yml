@@ -1,0 +1,7 @@
+base:
+  version: 1.x
+  css:
+    theme:
+      css/styles.css: {}
+
+# more info at https://www.drupal.org/node/2216195

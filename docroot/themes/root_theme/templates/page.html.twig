@@ -1,0 +1,33 @@
+{#{{ kint() }}#}
+{% block page_main %}
+<div class="container" role="main">
+
+    {% block page_header %}
+    <header class="row" role="banner">
+        <div class="col-sm-12">
+            {{ page.header }}
+        </div>
+    </header>
+    {% endblock %}
+
+    {% block page_content %}
+    <main class=row role="main">
+        <a id="main-content" tabindex="-1"></a>
+        <div class="col-sm-12">
+            {{ page.content }}
+        </div>
+    </main>
+    {% endblock %}
+
+    {% block page_footer %}
+    {% if page.footer %}
+        <footer class="row" role="contentinfo">
+            <div class="col-sm-12">
+                {{ page.footer }}
+            </div>
+        </footer>
+    {% endif %}
+    {% endblock %}
+
+</div>
+{% endblock %}

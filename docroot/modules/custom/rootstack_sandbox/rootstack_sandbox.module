@@ -10,19 +10,15 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * Implements hook_theme().
  */
-function rootstack_sandbox_theme($existing, $type, $theme, $path) {
+function rootstack_sandbox_theme() {
   return [
     'fancy_nodes' => [
       'variables' => [
-        'nodes' => '',
+        'summary' => '',
+        'some_nodes' => '',
+        'other_nodes' => '',
         'total' => ''
       ],
-    ],
-    'fancy_node' => [
-      'variables' => [
-        'title' => '',
-        'body' => ''
-      ],
-    ],
+    ]
   ];
 }

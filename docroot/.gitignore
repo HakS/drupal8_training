@@ -36,3 +36,6 @@ sites/simpletest
 
 # Ignore SimpleTest multi-site environment.
 # simpletest
+
+.sass-cache
+.sass-cache/*

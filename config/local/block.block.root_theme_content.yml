@@ -1,0 +1,20 @@
+uuid: 850bc064-57a1-4713-bd5d-9301cb509e90
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - root_theme
+id: root_theme_content
+theme: root_theme
+region: content
+weight: 1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

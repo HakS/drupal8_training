@@ -9,9 +9,6 @@ namespace Drupal\rootstack_sandbox\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Database\Driver\mysql\Connection;
-use Drupal\Core\Entity\Query\QueryFactory;
-use Drupal\Core\Entity\EntityManager;
 
 /**
  * Class NodeFancyDisplayController.
@@ -19,45 +16,50 @@ use Drupal\Core\Entity\EntityManager;
  * @package Drupal\rootstack_sandbox\Controller
  */
 class NodeFancyDisplayController extends ControllerBase {
-  protected $entity_query;
-  protected $database;
-  protected $entity_manager;
+  protected $container;
 
-  public function __construct(Connection $database, QueryFactory $entity_query, EntityManager $entity_manager) {
-    $this->database = $database;
-    $this->entity_query = $entity_query;
-    $this->entity_manager = $entity_manager;
+  public function __construct($container) {
+    $this->container = $container;
   }
 
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('database'),
-      $container->get('entity.query'),
-      $container->get('entity.manager')
-    );
+    return new static($container);
   }
 
   public function index($count) {
 //    Esta forma de llevar a cabo conexiones es mas rapida sin usar dependency injection
-//    sin embargo es considerada mala practica (puntos para el que explique porque)
+//    sin embargo es considerada mala practica
 //    $connection = \Drupal::database();
-    $select = $this->database->select('node', 'n');
+    $select = $this->container->get('database')->select('node', 'n');
     $select->fields('n');
     $select->range(0, $count);
     $result = $select->execute()->fetchAll();
-    dpm($result);
+//    dpm($result);
 
-    $query = $this->entity_query->get('node');
+    $query = $this->container->get('entity.query')->get('node');
     $query->condition('status', 1);
     $query->range(0, $count);
     $result = $query->execute();
-    dpm($result);
+//    dpm($result);
+//
+    $entity_manager = $this->container->get('entity.manager');
+    $storage = $entity_manager->getStorage('node');
+    $render_controller = $entity_manager->getViewBuilder('node');
+    $nodes = $storage->loadMultiple($result);
+    $some_nodes = array();
+    foreach ($nodes as $nid => $node) {
+      $some_nodes[$nid] = $node->getTitle();
+    }
+//    dpm($render_controller->view(array_values($nodes)[0]));
+//    dpm($nodes);
 
-    $storage = $this->entity_manager->getStorage('node');
-    dpm($storage->loadMultiple($result));
-
+//    Generar links en D8..... http://drupal.stackexchange.com/questions/144992/how-do-you-create-a-link-in-drupal-8 :(
     return [
       '#theme' => 'fancy_nodes',
+      '#summary' => $render_controller->view(array_values($nodes)[0]),
+//      '#some_nodes' => $render_controller->viewMultiple($nodes),
+      '#some_nodes' => $some_nodes,
+      '#total' => count($nodes)
     ];
   }
 

@@ -1,0 +1,12 @@
+<?php
+
+function root_theme_preprocess_status_messages(&$vars) {
+    if (isset($vars['message_list']['status'])) {
+        $vars['message_list']['info'] = $vars['message_list']['status'];
+        unset($vars['message_list']['status']);
+    }
+    if (isset($vars['message_list']['error'])) {
+        $vars['message_list']['danger'] = $vars['message_list']['error'];
+        unset($vars['message_list']['error']);
+    }
+}
