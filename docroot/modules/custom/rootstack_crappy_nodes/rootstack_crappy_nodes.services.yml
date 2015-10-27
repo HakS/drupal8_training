@@ -1,0 +1,7 @@
+services:
+  rootstack_crappy_nodes.default:
+    class: Drupal\rootstack_crappy_nodes\EventSubscriber\RootstackCrappyNodesSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+

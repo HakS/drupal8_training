@@ -1,7 +1,7 @@
-#services:
-#  rootstack_sandbox.default:
-#    class: Drupal\rootstack_sandbox\EventSubscriber\Rootstack_sandboxDefaultSubscriber
-#    arguments: []
-#    tags:
-#      - { name: event_subscriber }
-#
+services:
+  rootstack_sandbox.suscriber:
+    class: Drupal\rootstack_sandbox\EventSubscriber\RootstackSandboxEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+
