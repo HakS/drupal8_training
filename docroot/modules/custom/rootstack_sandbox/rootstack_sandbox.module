@@ -22,3 +22,11 @@ function rootstack_sandbox_theme() {
     ]
   ];
 }
+
+function rootstack_sandbox_preprocess_fancy_nodes(&$vars) {
+  dpm($vars);
+  $block = \Drupal\block\Entity\Block::load('views_block__sdf_block_1');
+  $em = \Drupal::entityManager();
+  $test = $em->getViewBuilder('block')->view($block);
+  $vars['summary'] = $test;
+}

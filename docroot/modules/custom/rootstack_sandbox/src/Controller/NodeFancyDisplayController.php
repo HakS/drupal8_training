@@ -17,7 +17,6 @@ use Drupal\rootstack_sandbox\NodeFancyDisplayEvent;
  * @package Drupal\rootstack_sandbox\Controller
  */
 class NodeFancyDisplayController extends ControllerBase {
-  protected $container;
   protected $db;
   protected $entityQuery;
   protected $entityManager;
@@ -29,6 +28,7 @@ class NodeFancyDisplayController extends ControllerBase {
     $this->entityManager = $entityManager;
     $this->eventDisp = $eventDisp;
   }
+
 
   public static function create(ContainerInterface $container) {
     return new static(
@@ -47,13 +47,11 @@ class NodeFancyDisplayController extends ControllerBase {
     $select->fields('n');
     $select->range(0, $count);
     $result = $select->execute()->fetchAll();
-//    dpm($result);
 
     $query = $this->entityQuery->get('node');
     $query->condition('status', 1);
     $query->range(0, $count);
     $result = $query->execute();
-//    dpm($result);
 
     $storage = $this->entityManager->getStorage('node');
     $render_controller = $this->entityManager->getViewBuilder('node');
@@ -62,17 +60,15 @@ class NodeFancyDisplayController extends ControllerBase {
     foreach ($nodes as $nid => $node) {
       $some_nodes[$nid] = $node->getTitle();
     }
-
     $dispatcher = $this->eventDisp;
     $e = new NodeFancyDisplayEvent($some_nodes);
     $event = $dispatcher->dispatch('rootstack_sandbox.fancy_node_edit', $e);
     $some_nodes = $event->getFancyNodes();
-    dpm($some_nodes);
-
-//    dpm($render_controller->view(array_values($nodes)[0]));
-//    dpm($nodes);
 
 //    Generar links en D8..... http://drupal.stackexchange.com/questions/144992/how-do-you-create-a-link-in-drupal-8 :(
+
+    $block = \Drupal\block\Entity\Block::load('views_block__sdf_block_1');
+    $test = $this->entityManager->getViewBuilder('block')->view($block);
 
     return [
       '#theme' => 'fancy_nodes',

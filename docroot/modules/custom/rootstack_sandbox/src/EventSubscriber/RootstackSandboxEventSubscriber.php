@@ -21,6 +21,7 @@ class RootstackSandboxEventSubscriber implements EventSubscriberInterface {
             $node = "my $nid is $node";
         }
         $event->setFancyNodes($nodes);
+//        $event->stopPropagation();
         drupal_set_message('tst');
     }
 
