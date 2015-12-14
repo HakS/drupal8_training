@@ -1,0 +1,15 @@
+
+drupalinar.rootnode_controller_root_nodes:
+  path: '/root_nodes'
+  defaults:
+    _controller: '\Drupal\drupalinar\Controller\RootnodeController::root_nodes'
+    _title: 'Root nodes'
+  requirements:
+    _permission: 'access content'
+drupalinar.rootnode_controller_root_node:
+  path: '/root_node/{nid}'
+  defaults:
+    _controller: '\Drupal\drupalinar\Controller\RootnodeController::root_node'
+    _title: 'Root node'
+  requirements:
+    _permission: 'access content'

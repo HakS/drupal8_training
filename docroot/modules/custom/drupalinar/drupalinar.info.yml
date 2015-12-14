@@ -1,0 +1,5 @@
+name: Drupalinar
+type: module
+description: Sample
+core: 8.x
+package: Rootstack

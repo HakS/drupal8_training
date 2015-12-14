@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Contains drupalinar.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function drupalinar_theme() {
+  $theme = [
+    'root_nodes' => [
+      'variables' => [
+        'nodes' => NULL,
+      ],
+    ],
+    'root_node' => [
+      'variables' => [
+        'node' => NULL,
+      ],
+    ],
+  ];
+
+  return $theme;
+}
